@@ -2,6 +2,7 @@
 #include "system_global.hpp"
 #include "libtcod_input.hpp"
 #include "libtcod_display.hpp"
+#include "interface_mainmenu.hpp"
 
 namespace System
 {
@@ -12,23 +13,9 @@ namespace System
 
         switch(Global::gameState)
         {
-        /*
         case STATE_MAINMENU:
             MainMenu::Loop();
             break;
-
-        case STATE_LOADSAVE:
-            LoadSave::Loop();
-            break;
-
-        case STATE_OPTIONS:
-            Options::Loop();
-            break;
-
-        case STATE_GAMEMAIN:
-            Game::Loop();
-            break;
-        */
         }
 
         LibTCOD::Flush();

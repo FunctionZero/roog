@@ -2,6 +2,7 @@
 #include "system_loop.hpp"
 #include "system_global.hpp"
 #include "libtcod_main.hpp"
+#include "interface_mainmenu.hpp"
 
 int main()
 {
@@ -21,6 +22,6 @@ namespace System
     {
         LibTCOD::Initialize();
 
-        //MainMenu::Open();
+        MainMenu::Open();
     }
 }
