@@ -12,8 +12,8 @@ namespace MainMenu
     void Initialize()
     {
         vectorMenuEntry.push_back(MenuEntry("New Game", 1, 1, true));
-        vectorMenuEntry.push_back(MenuEntry("Load/Save", 1, 2, false));
-        vectorMenuEntry.push_back(MenuEntry("Resume Game", 1, 3, false));
+        vectorMenuEntry.push_back(MenuEntry("Load/Save", 1, 2, true));
+        vectorMenuEntry.push_back(MenuEntry("Resume Game", 1, 3, true));
         vectorMenuEntry.push_back(MenuEntry("Options", 1, 5, true));
         vectorMenuEntry.push_back(MenuEntry("Exit Game", 1, 6, true));
     }
@@ -26,10 +26,10 @@ namespace MainMenu
 
     void Loop()
     {
-        Input();
-
         for(uint8_t i = 0; i < vectorMenuEntry.size(); i++)
             vectorMenuEntry[i].Loop();
+
+        Input();
 
         Display();
     }
@@ -165,12 +165,19 @@ MenuEntry::MenuEntry(std::string label, int x, int y, bool isEnabled)
 
 void MenuEntry::Loop()
 {
-    if((this - MainMenu::vectorMenuEntry.data() == MainMenu::currentMenuEntry) && gradient > 0)
+    if(IsSelected() && gradient < 100)
     {
-        if(gradient < 10)
+        gradient += 65;
+        if(gradient > 100)
+            gradient = 100;
+    }
+
+    else if(!IsSelected() && gradient > 0)
+    {
+        if(gradient < 18)
             gradient = 0;
         else
-            gradient -= 10;
+            gradient -= 18;
     }
 }
 
@@ -186,21 +193,21 @@ void MenuEntry::Display()
         TCODConsole::root->setDefaultForeground(TCODColor::white);
     }
 
-    else if(this - MainMenu::vectorMenuEntry.data() == MainMenu::currentMenuEntry)
-    {
-        TCODConsole::root->setBackgroundFlag(TCOD_BKGND_SET);
-        TCODConsole::root->setDefaultBackground(TCODColor::darkRed);
-        TCODConsole::root->print(pos.x, pos.y, extendedLabel.c_str());
-        TCODConsole::root->setDefaultBackground(TCODColor::black);
-    }
-
     else
     {
+        TCODConsole::root->setBackgroundFlag(TCOD_BKGND_SET);
+        TCODConsole::root->setDefaultBackground(TCODColor::lerp(TCODColor::black, TCODColor::darkRed, gradient / 100.0f));
         TCODConsole::root->print(pos.x, pos.y, extendedLabel.c_str());
+        TCODConsole::root->setDefaultBackground(TCODColor::black);
     }
 }
 
 void MenuEntry::OnSelect()
 {
-    this->gradient = 100;
+
+}
+
+bool MenuEntry::IsSelected()
+{
+    return (this - MainMenu::vectorMenuEntry.data() == MainMenu::currentMenuEntry);
 }

@@ -46,4 +46,6 @@ public:
     void Loop();
     void Display();
     void OnSelect();
+
+    bool IsSelected();
 };
