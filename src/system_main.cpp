@@ -1,7 +1,9 @@
 #include "system_main.hpp"
 #include "system_loop.hpp"
 #include "system_global.hpp"
+#include "system_random.hpp"
 #include "libtcod_main.hpp"
+#include "interface_main.hpp"
 #include "interface_mainmenu.hpp"
 
 int main()
@@ -21,6 +23,7 @@ namespace System
     void Initialize()
     {
         LibTCOD::Initialize();
+        Interface::Initialize();
 
         MainMenu::Open();
     }
