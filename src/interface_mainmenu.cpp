@@ -57,11 +57,11 @@ namespace MainMenu
             }
         }
 
-        if(LibTCOD::ev == TCOD_EVENT_MOUSE_MOVE || LibTCOD::ev == TCOD_EVENT_MOUSE_PRESS)
+        if(LibTCOD::ev == TCOD_EVENT_MOUSE_MOVE || LibTCOD::mouse.lbutton_pressed)
         {
             CheckCursor();
 
-            if(LibTCOD::ev == TCOD_EVENT_MOUSE_PRESS)
+            if(LibTCOD::mouse.lbutton_pressed)
             {
                 InterfaceEnter();
             }
