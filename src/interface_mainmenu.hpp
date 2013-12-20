@@ -3,6 +3,7 @@
 #include <vector>
 #include "system_vector2.hpp"
 #include "boost_fixedwidth.hpp"
+#include "interface_mainmenu_menuentry.hpp"
 
 enum enumMenuEntry
 {
@@ -16,6 +17,9 @@ enum enumMenuEntry
 
 namespace MainMenu
 {
+    extern std::vector<MenuEntry> vectorMenuEntry;
+    extern int8_t currentMenuEntry;
+
     void Initialize();
     void Open();
     void Loop();
@@ -30,22 +34,3 @@ namespace MainMenu
     void InterfaceEnter();
     void CheckCursor();
 }
-
-class MenuEntry
-{
-public:
-    Vector2 pos;
-    std::string label;
-    bool isEnabled;
-
-    uint8_t gradient;
-
-    MenuEntry(std::string label, Vector2 pos, bool isEnabled);
-    MenuEntry(std::string label, int x, int y, bool isEnabled);
-
-    void Loop();
-    void Display();
-    void OnSelect();
-
-    bool IsSelected();
-};
