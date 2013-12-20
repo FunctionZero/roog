@@ -1,9 +1,9 @@
 #pragma once
 
 enum enumGameState
-    {
-        STATE_MAINMENU
-    };
+{
+    STATE_MAINMENU
+};
 
 namespace Global
 {

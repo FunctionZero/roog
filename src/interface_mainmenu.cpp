@@ -1,7 +1,7 @@
 #include "libtcod_input.hpp"
 #include "interface_mainmenu.hpp"
 #include "system_global.hpp"
-
+#include "game_main.hpp"
 
 namespace MainMenu
 {
@@ -21,6 +21,9 @@ namespace MainMenu
     {
         Global::gameState = STATE_MAINMENU;
         currentMenuEntry = MM_UNINITIALIZED;
+
+        vectorMenuEntry[MM_LOADSAVE].isEnabled = !(Game::Game == nullptr);
+        vectorMenuEntry[MM_RESUME].isEnabled = !(Game::Game == nullptr);
     }
 
     void Loop()
