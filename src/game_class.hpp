@@ -1,7 +1,11 @@
 #pragma once
+#include "map_class.hpp"
 
-class ClassGame
+class classGame
 {
 public:
+    Map* CurrentMap;
 
+    classGame();
+    ~classGame();
 };

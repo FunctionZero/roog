@@ -12,7 +12,7 @@ public:
 
     std::vector<MapTile> vectorMapTile;
 
-    Map();
+    Map(uint8_t sizeX, uint8_t sizeY);
 
     MapTile* GetTileAt(Vector2 position);
     MapTile* GetTileAt(int x, int y);

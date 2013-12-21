@@ -7,7 +7,8 @@ class Object
 {
 public:
     Object* Parent;
-    std::vector<Object> Child;
+    std::vector<Object*> Child;
+
 
     uint8_t GetContainerLevel();
     Vector2 GetPosition();

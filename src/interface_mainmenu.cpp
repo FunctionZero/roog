@@ -1,5 +1,6 @@
 #include "libtcod_input.hpp"
 #include "interface_mainmenu.hpp"
+#include "interface_game.hpp"
 #include "system_global.hpp"
 #include "game_main.hpp"
 
@@ -21,6 +22,9 @@ namespace MainMenu
     {
         Global::ChangeGamestate(STATE_MAINMENU);
         currentMenuEntry = MM_UNINITIALIZED;
+
+        for(uint8_t i = 0; i < vectorMenuEntry.size(); i++)
+            vectorMenuEntry[i].gradient = 0;
 
         vectorMenuEntry[MM_LOADSAVE].isEnabled = (Game::Game != nullptr);
         vectorMenuEntry[MM_RESUME].isEnabled = (Game::Game != nullptr);
@@ -122,11 +126,23 @@ namespace MainMenu
     {
         switch(currentMenuEntry)
         {
-        case MM_EXIT:
-            Global::endProgram = true;
+        case MM_NEWGAME:
+            Game::CreateDebugGame();
+            Game::Open();
             break;
 
-        default:
+        case MM_LOADSAVE:
+            break;
+
+        case MM_RESUME:
+            Game::Open();
+            break;
+
+        case MM_OPTIONS:
+            break;
+
+        case MM_EXIT:
+            Global::endProgram = true;
             break;
         }
     }

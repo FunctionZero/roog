@@ -3,5 +3,7 @@
 
 namespace Game
 {
-    extern ClassGame* Game;
+    extern classGame* Game;
+
+    void CreateDebugGame();
 }
