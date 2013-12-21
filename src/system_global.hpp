@@ -2,7 +2,8 @@
 
 enum enumGameState
 {
-    STATE_MAINMENU
+    STATE_MAINMENU,
+    STATE_GAME
 };
 
 namespace Global
@@ -12,4 +13,6 @@ namespace Global
     extern bool endProgram;
 
     extern enumGameState gameState;
+
+    void ChangeGamestate(enumGameState gs);
 }

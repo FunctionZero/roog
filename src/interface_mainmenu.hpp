@@ -27,7 +27,7 @@ namespace MainMenu
     void Input();
     void Display();
 
-    void SelectMenuEntry(uint8_t nMenuEntry);
+    void SelectMenuEntry(int8_t nMenuEntry);
 
     void InterfaceUp();
     void InterfaceDown();

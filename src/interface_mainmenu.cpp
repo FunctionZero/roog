@@ -19,11 +19,11 @@ namespace MainMenu
 
     void Open()
     {
-        Global::gameState = STATE_MAINMENU;
+        Global::ChangeGamestate(STATE_MAINMENU);
         currentMenuEntry = MM_UNINITIALIZED;
 
-        vectorMenuEntry[MM_LOADSAVE].isEnabled = !(Game::Game == nullptr);
-        vectorMenuEntry[MM_RESUME].isEnabled = !(Game::Game == nullptr);
+        vectorMenuEntry[MM_LOADSAVE].isEnabled = (Game::Game != nullptr);
+        vectorMenuEntry[MM_RESUME].isEnabled = (Game::Game != nullptr);
     }
 
     void Loop()
@@ -76,10 +76,10 @@ namespace MainMenu
             vectorMenuEntry[i].Display();
     }
 
-    void SelectMenuEntry(uint8_t nMenuEntry)
+    void SelectMenuEntry(int8_t nMenuEntry)
     {
         currentMenuEntry = nMenuEntry;
-        if(nMenuEntry != -1 || nMenuEntry < vectorMenuEntry.size())
+        if(nMenuEntry != -1 || nMenuEntry < (uint8_t)vectorMenuEntry.size())
             vectorMenuEntry[nMenuEntry].OnSelect();
     }
 

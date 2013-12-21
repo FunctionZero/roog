@@ -3,6 +3,7 @@
 #include "libtcod_input.hpp"
 #include "libtcod_display.hpp"
 #include "interface_mainmenu.hpp"
+#include "interface_game.hpp"
 
 namespace System
 {
@@ -15,6 +16,10 @@ namespace System
         {
         case STATE_MAINMENU:
             MainMenu::Loop();
+            break;
+
+        case STATE_GAME:
+            Game::Loop();
             break;
         }
 
