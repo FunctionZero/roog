@@ -12,14 +12,19 @@ public:
     char DisplayChar;
     const TCODColor* DisplayColor;
 
-    uint8_t GetContainerLevel();
-    Vector2 GetPosition();
-    void Copy(const Object& obj);
+    virtual int GetContainerLevel();
+    virtual Vector2 GetPosition();
+    virtual void Copy(const Object& obj);
 
-    void MoveInto(Object* Parent);
-    Object* CreateChild();
+    virtual void MoveInto(Object* Parent);
+    virtual Object* CreateChild();
 
-    void AddChild(Object* Child);
-    void RemoveChild(Object* Child);
-    void SetParent(Object* Parent);
+    virtual void AddChild(Object* Child);
+    virtual void RemoveChild(Object* Child);
+    virtual void SetParent(Object* Parent);
+
+    virtual void MoveBy(Vector2 vect);
+    virtual void MoveBy(int x, int y);
+    virtual void MoveTo(Vector2 vect);
+    virtual void MoveTo(int x, int y);
 };

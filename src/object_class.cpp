@@ -3,23 +3,36 @@
 #include "maptile_class.hpp"
 #include "game_main.hpp"
 
-uint8_t Object::GetContainerLevel()
+int Object::GetContainerLevel()
 {
-    if(this == nullptr)
+    Object* temp = this;
+    if(this->Parent == nullptr)
         return 0;
+
     else
-        return Parent->GetContainerLevel() + 1;
+    {
+        int n = 0;
+        while(temp->Parent != nullptr)
+        {
+            n++;
+            temp = temp->Parent;
+        }
+        return n;
+    }
 }
 
 Vector2 Object::GetPosition()
 {
     if(GetContainerLevel() == 0)
     {
-        MapTile *temp = static_cast<MapTile*>(this);
+        MapTile *temp = dynamic_cast<MapTile*>(this);
+        /*
         unsigned int offset = temp - temp->ParentMap->vectorMapTile.data();
         unsigned int sizeX = temp->ParentMap->sizeX;
 
         return Vector2(offset % sizeX, offset / sizeX);
+        */
+        return Vector2(temp->posX, temp->posY);
     }
     else
         return Parent->GetPosition();
@@ -60,4 +73,32 @@ void Object::RemoveChild(Object* Child)
 void Object::SetParent(Object* Parent)
 {
     this->Parent = Parent;
+}
+
+void Object::MoveBy(Vector2 vect)
+{
+    Object::MoveBy(vect.x, vect.y);
+}
+
+void Object::MoveBy(int x, int y)
+{
+    Vector2 origin = this->GetPosition();
+    Object::MoveTo(origin.x + x, origin.y + y);
+}
+
+void Object::MoveTo(Vector2 vect)
+{
+    Object::MoveTo(vect.x, vect.y);
+}
+
+void Object::MoveTo(int x, int y)
+{
+    if(Game::IsPositionLegal(x, y))
+    {
+        MapTile* temp = Game::Game->CurrentMap->GetTileAt(x, y);
+        if(temp->Passable)
+        {
+            this->MoveInto(temp);
+        }
+    }
 }

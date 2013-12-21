@@ -16,4 +16,7 @@ public:
 
     MapTile* GetTileAt(Vector2 position);
     MapTile* GetTileAt(int x, int y);
+
+    bool IsPositionLegal(Vector2 vect);
+    bool IsPositionLegal(int x, int y);
 };

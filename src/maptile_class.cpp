@@ -3,12 +3,9 @@
 
 MapTile::MapTile(Map* ParentMap)
 {
-    MapTile();
     this->ParentMap = ParentMap;
-}
+    this->SetParent(nullptr);
 
-MapTile::MapTile()
-{
     if(RandomOneIn(6))
     {
         Passable = false;
@@ -16,6 +13,7 @@ MapTile::MapTile()
         DisplayChar = 'T';
         DisplayColor = &TCODColor::green;
     }
+
     else
     {
         Passable = true;
@@ -23,8 +21,6 @@ MapTile::MapTile()
         DisplayChar = '.';
         DisplayColor = &TCODColor::darkGrey;
     }
-
-    Parent = nullptr;
 }
 
 void MapTile::Copy(const MapTile& tile)

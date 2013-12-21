@@ -1,6 +1,7 @@
 #pragma once
 #include "libtcod.hpp"
 #include "object_class.hpp"
+#include "boost_fixedwidth.hpp"
 
 class Map;
 
@@ -10,10 +11,12 @@ public:
     bool Passable;
     bool Transparent;
 
+    uint16_t posX;
+    uint16_t posY;
+
     Map* ParentMap;
 
-    MapTile(Map* ParentMap);
-    MapTile();
+    MapTile(Map* ParentMap = nullptr);
 
     void Copy(const MapTile& tile);
 };
