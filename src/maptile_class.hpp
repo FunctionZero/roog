@@ -8,8 +8,8 @@ class Map;
 class MapTile : public Object
 {
 public:
-    bool Passable;
-    bool Transparent;
+    bool passable;
+    bool transparent;
 
     uint16_t posX;
     uint16_t posY;

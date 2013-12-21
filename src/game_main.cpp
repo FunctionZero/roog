@@ -13,6 +13,8 @@ namespace Game
         Game->PlayerObject = Game->CurrentMap->GetTileAt(1,1)->CreateChild();
         Game->PlayerObject->DisplayColor = &TCODColor::red;
         Game->PlayerObject->DisplayChar = '@';
+
+        Tick();
     }
 
     bool IsPositionLegal(Vector2 vect)
@@ -25,4 +27,8 @@ namespace Game
         return(Game->CurrentMap->IsPositionLegal(x, y));
     }
 
+    void Tick()
+    {
+        Game->CurrentMap->CalculateFOV(Game->PlayerObject->GetPosition(), 16);
+    }
 }

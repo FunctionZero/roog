@@ -8,16 +8,16 @@ MapTile::MapTile(Map* ParentMap)
 
     if(RandomOneIn(6))
     {
-        Passable = false;
-        Transparent = false;
+        passable = false;
+        transparent = false;
         DisplayChar = 'T';
         DisplayColor = &TCODColor::green;
     }
 
     else
     {
-        Passable = true;
-        Transparent = true;
+        passable = true;
+        transparent = true;
         DisplayChar = '.';
         DisplayColor = &TCODColor::darkGrey;
     }
@@ -25,8 +25,8 @@ MapTile::MapTile(Map* ParentMap)
 
 void MapTile::Copy(const MapTile& tile)
 {
-    Passable = tile.Passable;
-    Transparent = tile.Transparent;
+    passable = tile.passable;
+    transparent = tile.transparent;
     DisplayChar = tile.DisplayChar;
     DisplayColor = tile.DisplayColor;
 }

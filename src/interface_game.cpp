@@ -9,8 +9,8 @@ namespace Game
 {
     uint8_t viewportPosX = 1;
     uint8_t viewportPosY = 1;
-    uint8_t viewportSizeX = 15;
-    uint8_t viewportSizeY = 15;
+    uint8_t viewportSizeX = 35;
+    uint8_t viewportSizeY = 35;
 
     void Initialize()
     {
@@ -93,7 +93,7 @@ namespace Game
                 tempX = origin.x - viewportSizeX / 2 + x;
                 tempY = origin.y - viewportSizeY / 2 + y;
 
-                if(Game::Game->CurrentMap->IsPositionLegal(tempX, tempY))
+                if(Game::Game->CurrentMap->IsPositionLegal(tempX, tempY) && Game::Game->CurrentMap->MapFOV->isInFov(tempX, tempY))
                 {
                     CurrentObj = Game::Game->CurrentMap->GetTileAt(tempX, tempY);
                     if(!CurrentObj->Child.empty())

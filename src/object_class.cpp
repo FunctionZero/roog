@@ -96,9 +96,10 @@ void Object::MoveTo(int x, int y)
     if(Game::IsPositionLegal(x, y))
     {
         MapTile* temp = Game::Game->CurrentMap->GetTileAt(x, y);
-        if(temp->Passable)
+        if(temp->passable)
         {
             this->MoveInto(temp);
+            Game::Tick();
         }
     }
 }
