@@ -6,7 +6,7 @@ namespace LibTCOD
     void Initialize()
     {
         TCODConsole::setCustomFont("data/font/terminal12x12_gs_ro.png",TCOD_FONT_LAYOUT_ASCII_INROW);
-        TCODConsole::initRoot(Global::windowWidth, Global::windowHeight, "Roog Alpha");
+        TCODConsole::initRoot(Global::windowWidth, Global::windowHeight, "Roog");
         TCODSystem::setFps(25);
     }
 }

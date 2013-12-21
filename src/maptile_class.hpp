@@ -1,4 +1,5 @@
 #pragma once
+#include "libtcod.hpp"
 #include "object_class.hpp"
 
 class Map;
@@ -14,5 +15,5 @@ public:
     MapTile(Map* ParentMap);
     MapTile();
 
-    void CopyTile(const MapTile& tile);
+    void Copy(const MapTile& tile);
 };

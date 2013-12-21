@@ -2,6 +2,7 @@
 #include "interface_game.hpp"
 #include "interface_mainmenu.hpp"
 #include "system_global.hpp"
+#include "game_main.hpp"
 
 namespace Game
 {

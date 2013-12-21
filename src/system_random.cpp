@@ -16,3 +16,13 @@ double Random(double min, double max)
 
     return distribution(engine);
 }
+
+bool RandomOneIn(int chance)
+{
+    return Random(1, chance) == 1;
+}
+
+bool RandomPercent(int chance)
+{
+    return Random(1, 100) <= chance;
+}

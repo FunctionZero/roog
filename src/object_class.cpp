@@ -1,6 +1,7 @@
 #include "object_class.hpp"
 #include "map_class.hpp"
 #include "maptile_class.hpp"
+#include "game_main.hpp"
 
 uint8_t Object::GetContainerLevel()
 {
@@ -22,4 +23,41 @@ Vector2 Object::GetPosition()
     }
     else
         return Parent->GetPosition();
+}
+
+void Object::Copy(const Object& obj)
+{
+    this->DisplayChar = obj.DisplayChar;
+    this->DisplayColor = obj.DisplayColor;
+}
+
+void Object::MoveInto(Object* Parent)
+{
+    this->Parent->RemoveChild(this);
+    this->Parent = Parent;
+    Parent->AddChild(this);
+}
+
+Object* Object::CreateChild()
+{
+    Game::Game->ObjectList.push_back(Object());
+    Game::Game->ObjectList.back().SetParent(this);
+    this->AddChild(&Game::Game->ObjectList.back());
+    return &Game::Game->ObjectList.back();
+}
+
+void Object::AddChild(Object* Child)
+{
+    this->Child.push_back(Child);
+    this->Child.unique();
+}
+
+void Object::RemoveChild(Object* Child)
+{
+    this->Child.remove(Child);
+}
+
+void Object::SetParent(Object* Parent)
+{
+    this->Parent = Parent;
 }
