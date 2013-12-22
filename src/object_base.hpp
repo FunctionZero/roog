@@ -4,13 +4,24 @@
 #include "system_vector2.hpp"
 #include "libtcod.hpp"
 
+enum enumObjectType
+{
+    OBJECT_OBJECT,
+    OBJECT_MAPTILE
+};
+
 class Object
 {
 public:
     Object* Parent;
     std::list<Object*> Child;
+    enumObjectType ObjectType;
+
     char DisplayChar;
     const TCODColor* DisplayColor;
+
+    Object();
+    Object(Object* argParent);
 
     virtual int GetContainerLevel();
     virtual Vector2 GetPosition();

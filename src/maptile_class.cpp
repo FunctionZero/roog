@@ -3,8 +3,8 @@
 
 MapTile::MapTile(Map* ParentMap)
 {
-    this->ParentMap = ParentMap;
-    this->SetParent(nullptr);
+    ParentMap = ParentMap;
+    ObjectType = OBJECT_MAPTILE;
 
     if(RandomOneIn(6))
     {

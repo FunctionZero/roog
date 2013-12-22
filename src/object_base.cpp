@@ -3,6 +3,21 @@
 #include "maptile_class.hpp"
 #include "game_main.hpp"
 
+Object::Object()
+{
+    SetParent(nullptr);
+    ObjectType = OBJECT_OBJECT;
+
+    DisplayChar = '?';
+    DisplayColor = &TCODColor::pink;
+}
+
+Object::Object(Object* argParent)
+{
+    Object();
+    SetParent(argParent);
+}
+
 int Object::GetContainerLevel()
 {
     Object* temp = this;
