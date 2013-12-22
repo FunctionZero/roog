@@ -7,7 +7,7 @@ public:
     Entity* Parent;
 
     Component();
-    ~Component();
-    virtual void Copy(Component* argComponent);
-    virtual void OnTick();
+    virtual ~Component();
+
+    virtual void OnTick() = 0;
 };
