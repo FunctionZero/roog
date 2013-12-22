@@ -19,9 +19,9 @@ public:
     virtual void MoveInto(Object* Parent);
     virtual Object* CreateChild();
 
-    virtual void AddChild(Object* Child);
-    virtual void RemoveChild(Object* Child);
-    virtual void SetParent(Object* Parent);
+    virtual void AddChild(Object* argChild);
+    virtual void RemoveChild(Object* argChild);
+    virtual void SetParent(Object* argParent);
 
     virtual void MoveBy(Vector2 vect);
     virtual void MoveBy(int x, int y);

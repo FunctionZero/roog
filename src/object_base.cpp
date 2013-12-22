@@ -1,4 +1,4 @@
-#include "object_class.hpp"
+#include "object_base.hpp"
 #include "map_class.hpp"
 #include "maptile_class.hpp"
 #include "game_main.hpp"
@@ -59,20 +59,20 @@ Object* Object::CreateChild()
     return &Game::Game->ObjectList.back();
 }
 
-void Object::AddChild(Object* Child)
+void Object::AddChild(Object* argChild)
 {
-    this->Child.push_back(Child);
+    this->Child.push_back(argChild);
     this->Child.unique();
 }
 
-void Object::RemoveChild(Object* Child)
+void Object::RemoveChild(Object* argChild)
 {
-    this->Child.remove(Child);
+    this->Child.remove(argChild);
 }
 
-void Object::SetParent(Object* Parent)
+void Object::SetParent(Object* argParent)
 {
-    this->Parent = Parent;
+    this->Parent = argParent;
 }
 
 void Object::MoveBy(Vector2 vect)

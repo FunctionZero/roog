@@ -15,7 +15,7 @@ int main()
         System::Loop();
     }
 
-    return 0;
+    return EXIT_SUCCESS;
 }
 
 namespace System

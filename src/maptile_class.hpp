@@ -1,6 +1,6 @@
 #pragma once
 #include "libtcod.hpp"
-#include "object_class.hpp"
+#include "object_base.hpp"
 #include "boost_fixedwidth.hpp"
 
 class Map;

@@ -103,5 +103,7 @@ namespace Game
                 }
             }
         }
+
+        TCODConsole::root->print(1, 0, "Press ESC to return to main menu.");
     }
 }
