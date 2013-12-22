@@ -7,7 +7,9 @@
 enum enumObjectType
 {
     OBJECT_OBJECT,
-    OBJECT_MAPTILE
+    OBJECT_MAPTILE,
+    OBJECT_MISC,
+    OBJECT_CREATURE
 };
 
 class Object
@@ -22,13 +24,14 @@ public:
 
     Object();
     Object(Object* argParent);
+    ~Object();
 
     virtual int GetContainerLevel();
     virtual Vector2 GetPosition();
     virtual void Copy(const Object& obj);
 
     virtual void MoveInto(Object* Parent);
-    virtual Object* CreateChild();
+    virtual Object* CreateChild(enumObjectType argObjectType);
 
     virtual void AddChild(Object* argChild);
     virtual void RemoveChild(Object* argChild);

@@ -6,7 +6,7 @@ MapTile::MapTile(Map* ParentMap)
     ParentMap = ParentMap;
     ObjectType = OBJECT_MAPTILE;
 
-    if(RandomOneIn(6))
+    if(RandomOneIn(8))
     {
         passable = false;
         transparent = false;
@@ -14,12 +14,20 @@ MapTile::MapTile(Map* ParentMap)
         DisplayColor = &TCODColor::green;
     }
 
+    else if(RandomOneIn(12))
+    {
+        passable = false;
+        transparent = true;
+        DisplayChar = 'o';
+        DisplayColor = &TCODColor::grey;
+    }
+
     else
     {
         passable = true;
         transparent = true;
         DisplayChar = '.';
-        DisplayColor = &TCODColor::darkGrey;
+        DisplayColor = &TCODColor::darkSepia;
     }
 }
 

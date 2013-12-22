@@ -11,7 +11,7 @@ namespace Game
         Game = new classGame();
         Game->CurrentMap = new Map(100, 100);
 
-        Game->PlayerObject = Game->CurrentMap->GetTileAt(Random(0, Game->CurrentMap->sizeX -1), Random(0, Game->CurrentMap->sizeY -1))->CreateChild();
+        Game->PlayerObject = Game->CurrentMap->GetTileAt(Random(0, Game->CurrentMap->sizeX -1), Random(0, Game->CurrentMap->sizeY -1))->CreateChild(OBJECT_CREATURE);
         Game->PlayerObject->DisplayColor = &TCODColor::red;
         Game->PlayerObject->DisplayChar = '@';
 

@@ -1,4 +1,6 @@
 #include "object_base.hpp"
+#include "object_misc.hpp"
+#include "object_creature.hpp"
 #include "map_class.hpp"
 #include "maptile_class.hpp"
 #include "game_main.hpp"
@@ -16,6 +18,11 @@ Object::Object(Object* argParent)
 {
     Object();
     SetParent(argParent);
+}
+
+Object::~Object()
+{
+    //Parent->RemoveChild(this);
 }
 
 int Object::GetContainerLevel()
@@ -66,9 +73,28 @@ void Object::MoveInto(Object* Parent)
     Parent->AddChild(this);
 }
 
-Object* Object::CreateChild()
+class MapTile;
+class Misc;
+class Creature;
+
+Object* Object::CreateChild(enumObjectType argObjectType)
 {
-    Game::Game->ObjectList.push_back(Object());
+    switch(argObjectType)
+    {
+    case OBJECT_OBJECT:
+        Game::Game->ObjectList.push_back(Object());
+        break;
+    case OBJECT_MAPTILE:
+        Game::Game->ObjectList.push_back(MapTile());
+        break;
+    case OBJECT_MISC:
+        Game::Game->ObjectList.push_back(Misc());
+        break;
+    case OBJECT_CREATURE:
+        Game::Game->ObjectList.push_back(Creature());
+        break;
+    }
+
     Game::Game->ObjectList.back().SetParent(this);
     this->AddChild(&Game::Game->ObjectList.back());
     return &Game::Game->ObjectList.back();
