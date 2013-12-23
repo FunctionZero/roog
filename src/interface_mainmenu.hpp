@@ -3,7 +3,7 @@
 #include <vector>
 #include "system_vector2.hpp"
 #include "boost_fixedwidth.hpp"
-#include "interface_mainmenu_menuentry.hpp"
+#include "interface_mainmenu_entry.hpp"
 
 enum enumMenuEntry
 {
@@ -17,7 +17,7 @@ enum enumMenuEntry
 
 namespace MainMenu
 {
-    extern std::vector<MenuEntry> vectorMenuEntry;
+    extern std::vector<MainMenuEntry> vectorMenuEntry;
     extern int8_t currentMenuEntry;
 
     void Initialize();

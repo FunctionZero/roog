@@ -7,16 +7,16 @@
 
 namespace MainMenu
 {
-    std::vector<MenuEntry> vectorMenuEntry;
+    std::vector<MainMenuEntry> vectorMenuEntry;
     int8_t currentMenuEntry;
 
     void Initialize()
     {
-        vectorMenuEntry.push_back(MenuEntry("New Game", 1, 1, true));
-        vectorMenuEntry.push_back(MenuEntry("Load/Save", 1, 2, true));
-        vectorMenuEntry.push_back(MenuEntry("Resume Game", 1, 3, true));
-        vectorMenuEntry.push_back(MenuEntry("Options", 1, 5, true));
-        vectorMenuEntry.push_back(MenuEntry("Exit Game", 1, 6, true));
+        vectorMenuEntry.push_back(MainMenuEntry("New Game", 1, 1, true));
+        vectorMenuEntry.push_back(MainMenuEntry("Load/Save", 1, 2, true));
+        vectorMenuEntry.push_back(MainMenuEntry("Resume Game", 1, 3, true));
+        vectorMenuEntry.push_back(MainMenuEntry("Options", 1, 5, true));
+        vectorMenuEntry.push_back(MainMenuEntry("Exit Game", 1, 6, true));
     }
 
     void Open()
@@ -84,8 +84,6 @@ namespace MainMenu
     void SelectMenuEntry(int8_t nMenuEntry)
     {
         currentMenuEntry = nMenuEntry;
-        if(nMenuEntry != -1 || nMenuEntry < (uint8_t)vectorMenuEntry.size())
-            vectorMenuEntry[nMenuEntry].OnSelect();
     }
 
     void InterfaceUp()
@@ -155,7 +153,7 @@ namespace MainMenu
 
         for(uint8_t i = 0; i < vectorMenuEntry.size(); i++)
         {
-            if(vectorMenuEntry[i].isEnabled && vectorMenuEntry[i].IsMouseInBoundaries(LibTCOD::mouse.cx, LibTCOD::mouse.cy))
+            if(vectorMenuEntry[i].isEnabled && vectorMenuEntry[i].IsPointInBoundaries(LibTCOD::mouse.cx, LibTCOD::mouse.cy))
                 SelectMenuEntry(i);
         }
     }
