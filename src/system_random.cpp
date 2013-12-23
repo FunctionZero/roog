@@ -19,6 +19,8 @@ double Random(double min, double max)
 
 bool RandomOneIn(int chance)
 {
+    if(chance == 0)
+        return false;
     return Random(1, chance) == 1;
 }
 

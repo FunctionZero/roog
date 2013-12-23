@@ -19,4 +19,6 @@ public:
     void OnSelect();
 
     bool IsSelected();
+    bool IsMouseInBoundaries(Vector2 pos);
+    bool IsMouseInBoundaries(uint8_t x, uint8_t y);
 };

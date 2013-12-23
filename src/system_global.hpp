@@ -3,7 +3,8 @@
 enum enumGameState
 {
     STATE_MAINMENU,
-    STATE_GAME
+    STATE_GAME,
+    STATE_OPTIONS
 };
 
 namespace Global

@@ -1,6 +1,7 @@
 #include "libtcod_input.hpp"
 #include "interface_mainmenu.hpp"
 #include "interface_game.hpp"
+#include "interface_options.hpp"
 #include "system_global.hpp"
 #include "game_main.hpp"
 
@@ -139,6 +140,7 @@ namespace MainMenu
             break;
 
         case MM_OPTIONS:
+            Options::Open();
             break;
 
         case MM_EXIT:
@@ -153,13 +155,8 @@ namespace MainMenu
 
         for(uint8_t i = 0; i < vectorMenuEntry.size(); i++)
         {
-            if(vectorMenuEntry[i].isEnabled &&
-               LibTCOD::mouse.cx >= (uint8_t)vectorMenuEntry[i].pos.x - 1 &&
-               LibTCOD::mouse.cx <= (uint8_t)vectorMenuEntry[i].pos.x + (uint8_t)vectorMenuEntry[i].label.length() + 1 &&
-               LibTCOD::mouse.cy == (uint8_t)vectorMenuEntry[i].pos.y)
-               {
-                   SelectMenuEntry(i);
-               }
+            if(vectorMenuEntry[i].isEnabled && vectorMenuEntry[i].IsMouseInBoundaries(LibTCOD::mouse.cx, LibTCOD::mouse.cy))
+                SelectMenuEntry(i);
         }
     }
 }

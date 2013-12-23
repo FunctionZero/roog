@@ -4,6 +4,7 @@
 #include "libtcod_display.hpp"
 #include "interface_mainmenu.hpp"
 #include "interface_game.hpp"
+#include "interface_options.hpp"
 
 namespace System
 {
@@ -20,6 +21,10 @@ namespace System
 
         case STATE_GAME:
             Game::Loop();
+            break;
+
+        case STATE_OPTIONS:
+            Options::Loop();
             break;
         }
 

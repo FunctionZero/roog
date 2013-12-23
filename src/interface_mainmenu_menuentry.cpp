@@ -69,3 +69,15 @@ bool MenuEntry::IsSelected()
 {
     return (this - MainMenu::vectorMenuEntry.data() == MainMenu::currentMenuEntry);
 }
+
+bool MenuEntry::IsMouseInBoundaries(Vector2 pos)
+{
+    return IsMouseInBoundaries(pos.x, pos.y);
+}
+
+bool MenuEntry::IsMouseInBoundaries(uint8_t x, uint8_t y)
+{
+    return LibTCOD::mouse.cx >= (uint8_t)pos.x - 1 &&
+           LibTCOD::mouse.cx <= (uint8_t)pos.x + (uint8_t)label.length() + 1 &&
+           LibTCOD::mouse.cy == (uint8_t)pos.y;
+}

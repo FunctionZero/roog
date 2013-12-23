@@ -1,6 +1,6 @@
 #pragma once
 
-namespace Game
+namespace Options
 {
     void Initialize();
     void Open();
