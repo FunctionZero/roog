@@ -10,7 +10,11 @@ namespace Options
     extern std::vector<OptionsEntryBool> vectorOptionsBool;
     extern std::vector<OptionsEntryInt> vectorOptionsInt;
     extern int8_t currentOptionsEntry;
-    extern uint8_t topmostOptionsEntry;
+
+    extern uint8_t viewportPosX;
+    extern uint8_t viewportPosY;
+    extern uint8_t viewportHeight;
+    extern uint8_t viewportEntryOffset;
 
     void PushBackBool(std::string label, bool* value);
     void PushBackInt(std::string label, int* value, int min, int max);

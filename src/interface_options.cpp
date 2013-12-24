@@ -12,7 +12,11 @@ namespace Options
     std::vector<OptionsEntryBool> vectorOptionsBool;
     std::vector<OptionsEntryInt> vectorOptionsInt;
     int8_t currentOptionsEntry;
-    uint8_t topmostOptionsEntry;
+
+    uint8_t viewportPosX = 1;
+    uint8_t viewportPosY = 2;
+    uint8_t viewportHeight = 10;
+    uint8_t viewportEntryOffset = 0;
 
     void PushBackBool(std::string label, bool* value)
     {
@@ -37,7 +41,7 @@ namespace Options
     void Open()
     {
         currentOptionsEntry = -1;
-        topmostOptionsEntry = 0;
+        viewportEntryOffset = 0;
         Global::ChangeGamestate(STATE_OPTIONS);
     }
 
@@ -157,10 +161,10 @@ namespace Options
     {
         SelectOptionsEntry(-1);
 
-        for(unsigned int i = topmostOptionsEntry; i < vectorOptions.size(); i++)
-            if(LibTCOD::mouse.cx >= 1 &&
-               LibTCOD::mouse.cx <= 2 + vectorOptions[i]->length &&
-               LibTCOD::mouse.cy == 2+i)
+        for(unsigned int i = viewportEntryOffset; i < vectorOptions.size(); i++)
+            if(LibTCOD::mouse.cx >= viewportPosX &&
+               LibTCOD::mouse.cx <= viewportPosX + vectorOptions[i]->length &&
+               LibTCOD::mouse.cy == viewportPosY + i)
             {
                SelectOptionsEntry(i);
                break;

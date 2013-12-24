@@ -18,5 +18,6 @@ public:
     virtual void ShiftLeft() = 0;
     virtual void ShiftRight() = 0;
     virtual void Enter() = 0;
+    virtual void CheckLength() = 0;
     virtual bool IsSelected();
 };

@@ -17,4 +17,5 @@ public:
     void ShiftLeft();
     void ShiftRight();
     void Enter();
+    void CheckLength();
 };

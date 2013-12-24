@@ -1,14 +1,12 @@
 #include <string>
 #include "interface_options_entrybool.hpp"
+#include "interface_options.hpp"
 #include "libtcod.hpp"
 
 OptionsEntryBool::OptionsEntryBool(std::string label, bool* value) : OptionsEntry::OptionsEntry(label)
 {
     this->value = value;
-    if(*value)
-        length = 4;
-    else
-        length = 5;
+    CheckLength();
 }
 
 void OptionsEntryBool::Loop()
@@ -31,8 +29,8 @@ void OptionsEntryBool::Display(uint8_t x, uint8_t y)
         TCODConsole::root->print(x, y, "[FALSE]");
 
     TCODConsole::root->setDefaultBackground(tempColor2);
-    TCODConsole::root->setCharBackground(x+2+length, y, tempColor2);
-    TCODConsole::root->print(x+3+length, y, label.c_str());
+    TCODConsole::root->setCharBackground(x+1+length, y, tempColor2);
+    TCODConsole::root->print(x+2+length, y, label.c_str());
     TCODConsole::root->setDefaultBackground(TCODColor::black);
 }
 
@@ -59,8 +57,15 @@ void OptionsEntryBool::ShiftRight()
 void OptionsEntryBool::Enter()
 {
     (*value) = !(*value);
+
+    CheckLength();
+    Options::CheckCursor();
+}
+
+void OptionsEntryBool::CheckLength()
+{
     if(*value)
-        length = 4;
-    else
         length = 5;
+    else
+        length = 6;
 }
