@@ -1,7 +1,8 @@
 #include "object_base.hpp"
-#include "object_creature.hpp"
-#include "map_class.hpp"
 #include "object_maptile.hpp"
+#include "object_creature.hpp"
+#include "system_exception.hpp"
+#include "map_class.hpp"
 #include "game_main.hpp"
 
 Object::Object()
@@ -56,7 +57,7 @@ void Object::ChangeToTemplate(TObject* argTemplate)
     }
     else
     {
-        //EXCEPTION
+        System::Error("Object tried to change into different ObjectType.", 201);
     }
 }
 
@@ -65,29 +66,6 @@ void Object::MoveInto(Object* Parent)
     this->Parent->RemoveChild(this);
     this->Parent = Parent;
     Parent->AddChild(this);
-}
-
-class MapTile;
-class Creature;
-
-Object* Object::CreateChild(enumObjectType argObjectType)
-{
-    switch(argObjectType)
-    {
-    case OBJECT_OBJECT:
-        Game::Game->ObjectList.push_back(Object());
-        break;
-    case OBJECT_MAPTILE:
-        Game::Game->ObjectList.push_back(MapTile());
-        break;
-    case OBJECT_CREATURE:
-        Game::Game->ObjectList.push_back(Creature());
-        break;
-    }
-
-    Game::Game->ObjectList.back().SetParent(this);
-    this->AddChild(&Game::Game->ObjectList.back());
-    return &Game::Game->ObjectList.back();
 }
 
 void Object::AddChild(Object* argChild)

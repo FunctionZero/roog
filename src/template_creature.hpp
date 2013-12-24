@@ -5,5 +5,5 @@
 class TCreature : public TObject
 {
 public:
-
+    TCreature();
 };

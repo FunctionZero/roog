@@ -10,4 +10,6 @@ public:
     enumObjectType ObjectType;
     char DisplayChar;
     const TCODColor* DisplayColor;
+
+    TObject();
 };

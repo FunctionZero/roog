@@ -11,7 +11,13 @@ namespace TemplatePool
         TemplateList.push_back(new TCreature());
         DefaultCreature = TemplateList.back();
 
+        DefaultCreature->DisplayChar = '?';
+        DefaultCreature->DisplayColor = &TCODColor::pink;
+
         TemplateList.push_back(new TCreature());
         Player = TemplateList.back();
+
+        Player->DisplayChar = '@';
+        Player->DisplayColor = &TCODColor::red;
     }
 }

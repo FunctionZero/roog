@@ -1,27 +1,29 @@
 #include "game_objectpool.hpp"
 #include "game_templatepool.hpp"
+#include "system_exception.hpp"
 
-Object* ObjectPool::NewObject(enumObjectType objType)
+Object* ObjectPool::NewObject(Object* argParent, enumObjectType objType)
 {
     switch(objType)
     {
     case OBJECT_OBJECT:
-        //EXCEPTION
+        System::Error("ObjectPool tried to create OBJECT_OBJECT.", 101);
         return nullptr;
 
     case OBJECT_MAPTILE:
-        //EXCEPTION
+        System::Error("ObjectPool tried to create OBJECT_MAPTILE.", 102);
         return nullptr;
 
     case OBJECT_CREATURE:
-        return NewObject(TemplatePool::DefaultCreature);
+        return NewObject(argParent, TemplatePool::DefaultCreature);
 
     default:
+        System::Error("ObjectPool encountered unhandled ObjectType.", 111);
         return nullptr;
     }
 }
 
-Object* ObjectPool::NewObject(TObject* objTemplate)
+Object* ObjectPool::NewObject(Object* argParent, TObject* objTemplate)
 {
     switch(objTemplate->ObjectType)
     {
@@ -38,10 +40,12 @@ Object* ObjectPool::NewObject(TObject* objTemplate)
         break;
 
     default:
-        //EXCEPTION
+        System::Error("ObjectPool encountered unhandled ObjectType.", 111);
         return nullptr;
     }
 
+    argParent->AddChild(ObjectList.back());
+    ObjectList.back()->SetParent(argParent);
     ObjectList.back()->ChangeToTemplate(objTemplate);
     return ObjectList.back();
 }

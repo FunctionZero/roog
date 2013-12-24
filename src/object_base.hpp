@@ -25,8 +25,6 @@ public:
     virtual void ChangeToTemplate(TObject* argTemplate);
 
     void MoveInto(Object* Parent);
-    Object* CreateChild(enumObjectType argObjectType);
-
     void AddChild(Object* argChild);
     void RemoveChild(Object* argChild);
     void SetParent(Object* argParent);

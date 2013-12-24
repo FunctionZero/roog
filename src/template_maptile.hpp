@@ -5,6 +5,6 @@
 class TMapTile : public TObject
 {
 public:
-
+    TMapTile();
 };
 

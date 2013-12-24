@@ -9,6 +9,6 @@ class ObjectPool
 public:
     std::list<Object*> ObjectList;
 
-    Object* NewObject(enumObjectType objType);
-    Object* NewObject(TObject* objTemplate);
+    Object* NewObject(Object* argParent, enumObjectType objType);
+    Object* NewObject(Object* argParent, TObject* objTemplate);
 };
