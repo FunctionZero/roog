@@ -85,15 +85,12 @@ namespace Options
             }
         }
 
-        if(LibTCOD::ev == TCOD_EVENT_MOUSE_MOVE || LibTCOD::mouse.lbutton_pressed)
-        {
-            CheckCursor();
+        CheckCursor();
 
-            if(LibTCOD::mouse.lbutton_pressed)
+        if(LibTCOD::mouse.lbutton_pressed)
             {
                 InterfaceEnter();
             }
-        }
     }
 
     void Display()
@@ -159,15 +156,18 @@ namespace Options
 
     void CheckCursor()
     {
-        SelectOptionsEntry(-1);
+        if(LibTCOD::ev == TCOD_EVENT_MOUSE_MOVE || LibTCOD::mouse.lbutton_pressed)
+        {
+            SelectOptionsEntry(-1);
 
-        for(unsigned int i = viewportEntryOffset; i < vectorOptions.size(); i++)
-            if(LibTCOD::mouse.cx >= viewportPosX &&
-               LibTCOD::mouse.cx <= viewportPosX + vectorOptions[i]->length &&
-               LibTCOD::mouse.cy == viewportPosY + i)
-            {
-               SelectOptionsEntry(i);
-               break;
-            }
+            for(unsigned int i = viewportEntryOffset; i < vectorOptions.size(); i++)
+                if(LibTCOD::mouse.cx >= viewportPosX &&
+                   LibTCOD::mouse.cx <= viewportPosX + vectorOptions[i]->length &&
+                   LibTCOD::mouse.cy == viewportPosY + i)
+                {
+                   SelectOptionsEntry(i);
+                   return;
+                }
+        }
     }
 }
