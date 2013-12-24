@@ -2,7 +2,7 @@
 
 namespace System
 {
-    void Log(std::string logstring);
-    void Warning(std::string logstring);
-    void Error(std::string logstring);
+    void Log(std::string argString);
+    void Warning(std::string argString);
+    void Error(std::string argString);
 }
