@@ -19,4 +19,5 @@ public:
     MapTile(Map* ParentMap = nullptr);
 
     void Copy(const MapTile& tile);
+    Vector2 GetPosition();
 };

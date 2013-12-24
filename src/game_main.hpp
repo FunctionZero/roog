@@ -1,6 +1,6 @@
 #pragma once
 #include "game_class.hpp"
-#include "system_vector2.hpp"
+#include "misc_vector2.hpp"
 
 namespace Game
 {

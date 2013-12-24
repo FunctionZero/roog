@@ -1,7 +1,7 @@
 #pragma once
 #include <string>
 #include "boost_fixedwidth.hpp"
-#include "system_vector2.hpp"
+#include "misc_vector2.hpp"
 
 class BaseEntry
 {

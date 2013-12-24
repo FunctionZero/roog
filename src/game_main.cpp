@@ -1,5 +1,5 @@
 #include "game_main.hpp"
-#include "system_random.hpp"
+#include "misc_random.hpp"
 #include "libtcod.hpp"
 
 namespace Game

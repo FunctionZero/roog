@@ -1,7 +1,7 @@
 #pragma once
 #include <string>
 #include <vector>
-#include "system_vector2.hpp"
+#include "misc_vector2.hpp"
 #include "boost_fixedwidth.hpp"
 #include "interface_mainmenu_entry.hpp"
 

@@ -165,9 +165,9 @@ namespace Options
             SelectOptionsEntry(-1);
 
             for(unsigned int i = viewportEntryOffset; i < vectorOptions.size(); i++)
-                if(LibTCOD::mouse.cx >= viewportPosX &&
-                   LibTCOD::mouse.cx <= viewportPosX + vectorOptions[i]->length &&
-                   LibTCOD::mouse.cy == viewportPosY + i)
+                if((uint8_t)LibTCOD::mouse.cx >= viewportPosX &&
+                   (uint8_t)LibTCOD::mouse.cx <= viewportPosX + vectorOptions[i]->length &&
+                   (uint8_t)LibTCOD::mouse.cy == viewportPosY + i)
                 {
                    SelectOptionsEntry(i);
                    return;

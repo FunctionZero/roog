@@ -1,5 +1,5 @@
-#include "maptile_class.hpp"
-#include "system_random.hpp"
+#include "object_maptile.hpp"
+#include "misc_random.hpp"
 
 MapTile::MapTile(Map* ParentMap)
 {
@@ -37,4 +37,9 @@ void MapTile::Copy(const MapTile& tile)
     transparent = tile.transparent;
     DisplayChar = tile.DisplayChar;
     DisplayColor = tile.DisplayColor;
+}
+
+Vector2 MapTile::GetPosition()
+{
+    return Vector2(posX, posY);
 }

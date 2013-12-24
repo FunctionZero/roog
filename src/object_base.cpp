@@ -2,7 +2,7 @@
 #include "object_misc.hpp"
 #include "object_creature.hpp"
 #include "map_class.hpp"
-#include "maptile_class.hpp"
+#include "object_maptile.hpp"
 #include "game_main.hpp"
 
 Object::Object()
@@ -45,19 +45,7 @@ int Object::GetContainerLevel()
 
 Vector2 Object::GetPosition()
 {
-    if(GetContainerLevel() == 0)
-    {
-        MapTile *temp = dynamic_cast<MapTile*>(this);
-        /*
-        unsigned int offset = temp - temp->ParentMap->vectorMapTile.data();
-        unsigned int sizeX = temp->ParentMap->sizeX;
-
-        return Vector2(offset % sizeX, offset / sizeX);
-        */
-        return Vector2(temp->posX, temp->posY);
-    }
-    else
-        return Parent->GetPosition();
+    return Parent->GetPosition();
 }
 
 void Object::Copy(const Object& obj)

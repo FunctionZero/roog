@@ -1,7 +1,7 @@
 #pragma once
 #include <list>
 #include "boost_fixedwidth.hpp"
-#include "system_vector2.hpp"
+#include "misc_vector2.hpp"
 #include "libtcod.hpp"
 
 enum enumObjectType
@@ -28,17 +28,17 @@ public:
 
     virtual int GetContainerLevel();
     virtual Vector2 GetPosition();
-    virtual void Copy(const Object& obj);
+    void Copy(const Object& obj);
 
-    virtual void MoveInto(Object* Parent);
-    virtual Object* CreateChild(enumObjectType argObjectType);
+    void MoveInto(Object* Parent);
+    Object* CreateChild(enumObjectType argObjectType);
 
-    virtual void AddChild(Object* argChild);
-    virtual void RemoveChild(Object* argChild);
-    virtual void SetParent(Object* argParent);
+    void AddChild(Object* argChild);
+    void RemoveChild(Object* argChild);
+    void SetParent(Object* argParent);
 
-    virtual void MoveBy(Vector2 vect);
-    virtual void MoveBy(int x, int y);
-    virtual void MoveTo(Vector2 vect);
-    virtual void MoveTo(int x, int y);
+    void MoveBy(Vector2 vect);
+    void MoveBy(int x, int y);
+    void MoveTo(Vector2 vect);
+    void MoveTo(int x, int y);
 };

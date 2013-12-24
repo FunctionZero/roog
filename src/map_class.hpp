@@ -1,9 +1,9 @@
 #pragma once
 #include <vector>
 #include "libtcod.hpp"
-#include "system_vector2.hpp"
+#include "misc_vector2.hpp"
 #include "boost_fixedwidth.hpp"
-#include "maptile_class.hpp"
+#include "object_maptile.hpp"
 
 class Map
 {
