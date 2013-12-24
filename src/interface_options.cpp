@@ -60,6 +60,10 @@ namespace Options
         {
             switch(LibTCOD::key.vk)
             {
+            case TCODK_ESCAPE:
+                MainMenu::Open();
+                break;
+
             case TCODK_ENTER:
                 InterfaceEnter();
                 break;
