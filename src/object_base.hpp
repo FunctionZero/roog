@@ -8,7 +8,6 @@ enum enumObjectType
 {
     OBJECT_OBJECT,
     OBJECT_MAPTILE,
-    OBJECT_MISC,
     OBJECT_CREATURE
 };
 

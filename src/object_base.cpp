@@ -1,5 +1,4 @@
 #include "object_base.hpp"
-#include "object_misc.hpp"
 #include "object_creature.hpp"
 #include "map_class.hpp"
 #include "object_maptile.hpp"
@@ -62,7 +61,6 @@ void Object::MoveInto(Object* Parent)
 }
 
 class MapTile;
-class Misc;
 class Creature;
 
 Object* Object::CreateChild(enumObjectType argObjectType)
@@ -74,9 +72,6 @@ Object* Object::CreateChild(enumObjectType argObjectType)
         break;
     case OBJECT_MAPTILE:
         Game::Game->ObjectList.push_back(MapTile());
-        break;
-    case OBJECT_MISC:
-        Game::Game->ObjectList.push_back(Misc());
         break;
     case OBJECT_CREATURE:
         Game::Game->ObjectList.push_back(Creature());
