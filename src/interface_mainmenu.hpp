@@ -20,15 +20,13 @@ namespace MainMenu
     extern std::vector<MainMenuEntry> vectorMenuEntry;
     extern int8_t currentMenuEntry;
 
+    void PushBack(std::string label, int x, int y, bool isEnabled);
     void Initialize();
     void Open();
     void Loop();
-
     void Input();
     void Display();
-
-    void SelectMenuEntry(int8_t nMenuEntry);
-
+    void SelectMenuEntry(int8_t argInt);
     void InterfaceUp();
     void InterfaceDown();
     void InterfaceEnter();

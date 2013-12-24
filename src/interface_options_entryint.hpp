@@ -9,7 +9,7 @@ public:
     OptionsEntryInt(std::string label, int* value);
 
     virtual void Loop();
-    virtual void Display();
+    virtual void Display(uint8_t x, uint8_t y);
     virtual bool IsPointInBoundaries(Vector2 pos);
     virtual bool IsPointInBoundaries(uint8_t x, uint8_t y);
 };

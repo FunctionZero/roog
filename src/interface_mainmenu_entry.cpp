@@ -4,11 +4,6 @@
 #include "interface_mainmenu_entry.hpp"
 #include "interface_mainmenu.hpp"
 
-MainMenuEntry::MainMenuEntry(std::string label, Vector2 pos, bool isEnabled) : MainMenuEntry(label, pos.x, pos.y, isEnabled)
-{
-
-}
-
 MainMenuEntry::MainMenuEntry(std::string label, int x, int y, bool isEnabled) : BaseEntry(label)
 {
     this->x = x;
@@ -59,7 +54,7 @@ void MainMenuEntry::Display()
 
 bool MainMenuEntry::IsSelected()
 {
-    return this - MainMenu::vectorMenuEntry.data() == MainMenu::currentMenuEntry;
+    return ID == MainMenu::currentMenuEntry;
 }
 
 bool MainMenuEntry::IsPointInBoundaries(Vector2 pos)

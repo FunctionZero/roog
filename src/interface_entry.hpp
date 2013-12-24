@@ -1,10 +1,12 @@
 #pragma once
 #include <string>
+#include "boost_fixedwidth.hpp"
 #include "system_vector2.hpp"
 
 class BaseEntry
 {
 public:
+    uint8_t ID;
     std::string label;
 
     BaseEntry(std::string label);

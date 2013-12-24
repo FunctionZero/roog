@@ -10,13 +10,19 @@ namespace MainMenu
     std::vector<MainMenuEntry> vectorMenuEntry;
     int8_t currentMenuEntry;
 
+    void PushBack(std::string label, int x, int y, bool isEnabled)
+    {
+        vectorMenuEntry.push_back(MainMenuEntry(label, x, y, isEnabled));
+        vectorMenuEntry.back().ID = vectorMenuEntry.size() - 1;
+    }
+
     void Initialize()
     {
-        vectorMenuEntry.push_back(MainMenuEntry("New Game", 1, 1, true));
-        vectorMenuEntry.push_back(MainMenuEntry("Load/Save", 1, 2, true));
-        vectorMenuEntry.push_back(MainMenuEntry("Resume Game", 1, 3, true));
-        vectorMenuEntry.push_back(MainMenuEntry("Options", 1, 5, true));
-        vectorMenuEntry.push_back(MainMenuEntry("Exit Game", 1, 6, true));
+        PushBack("New Game", 1, 1, true);
+        PushBack("Load/Save", 1, 2, true);
+        PushBack("Resume Game", 1, 3, true);
+        PushBack("Options", 1, 5, true);
+        PushBack("Exit Game", 1, 6, true);
     }
 
     void Open()
@@ -81,9 +87,9 @@ namespace MainMenu
             vectorMenuEntry[i].Display();
     }
 
-    void SelectMenuEntry(int8_t nMenuEntry)
+    void SelectMenuEntry(int8_t argInt)
     {
-        currentMenuEntry = nMenuEntry;
+        currentMenuEntry = argInt;
     }
 
     void InterfaceUp()
@@ -91,11 +97,8 @@ namespace MainMenu
         if(currentMenuEntry > 0)
         {
             SelectMenuEntry(currentMenuEntry - 1);
-
             if(!vectorMenuEntry[currentMenuEntry].isEnabled)
-            {
                 InterfaceUp();
-            }
         }
 
         else
@@ -110,9 +113,7 @@ namespace MainMenu
         {
             SelectMenuEntry(currentMenuEntry + 1);
             if(!vectorMenuEntry[currentMenuEntry].isEnabled)
-            {
                 InterfaceDown();
-            }
         }
 
         else
