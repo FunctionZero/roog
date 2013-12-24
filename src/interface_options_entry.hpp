@@ -3,14 +3,15 @@
 
 class OptionsEntry : public BaseEntry
 {
+public:
     std::string label;
     uint8_t gradient;
 
     OptionsEntry(std::string label);
 
-    void Loop();
-    void Display();
-    bool IsSelected();
-    bool IsMouseInBoundaries(Vector2 pos);
-    bool IsMouseInBoundaries(uint8_t x, uint8_t y);
+    virtual void Loop();
+    virtual void Display();
+    virtual bool IsSelected();
+    virtual bool IsPointInBoundaries(Vector2 pos);
+    virtual bool IsPointInBoundaries(uint8_t x, uint8_t y);
 };

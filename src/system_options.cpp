@@ -2,5 +2,6 @@
 
 namespace Options
 {
-
+    bool IsMouseEnabled;
+    int PlayerSightRadius;
 }

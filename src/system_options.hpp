@@ -4,5 +4,5 @@
 namespace Options
 {
     extern bool IsMouseEnabled;
-    extern uint8_t PlayerSightRadius;
+    extern int PlayerSightRadius;
 }
