@@ -12,7 +12,12 @@ public:
 
     virtual void Loop();
     virtual void Display();
-    virtual void Display(uint8_t x, uint8_t y);
+    virtual void Display(uint8_t x, uint8_t y) = 0;
+    virtual void Left() = 0;
+    virtual void Right() = 0;
+    virtual void ShiftLeft() = 0;
+    virtual void ShiftRight() = 0;
+    virtual void Enter() = 0;
     virtual bool IsSelected();
     virtual bool IsPointInBoundaries(Vector2 pos);
     virtual bool IsPointInBoundaries(uint8_t x, uint8_t y);

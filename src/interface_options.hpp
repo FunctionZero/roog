@@ -13,7 +13,7 @@ namespace Options
     extern uint8_t topmostOptionsEntry;
 
     void PushBackBool(std::string label, bool* value);
-    void PushBackInt(std::string label, int* value);
+    void PushBackInt(std::string label, int* value, int min, int max);
 
     void Initialize();
     void Open();
@@ -23,6 +23,8 @@ namespace Options
     void SelectOptionsEntry(int8_t argInt);
     void InterfaceUp();
     void InterfaceDown();
+    void InterfaceLeft();
+    void InterfaceRight();
     void InterfaceEnter();
     void CheckCursor();
 }

@@ -3,9 +3,11 @@
 #include "interface_options_entryint.hpp"
 #include "libtcod.hpp"
 
-OptionsEntryInt::OptionsEntryInt(std::string label, int* value) : OptionsEntry(label)
+OptionsEntryInt::OptionsEntryInt(std::string label, int* value, int min, int max) : OptionsEntry(label)
 {
     this->value = value;
+    this->min = min;
+    this->max = max;
 
     int tempInt = *value;
     int length = 0;
@@ -42,6 +44,45 @@ void OptionsEntryInt::Display(uint8_t x, uint8_t y)
     TCODConsole::root->setCharBackground(x+2+length, y, tempColor2);
     TCODConsole::root->print(x+3+length, y, label.c_str());
     TCODConsole::root->setDefaultBackground(TCODColor::black);
+}
+
+void OptionsEntryInt::Left()
+{
+    if((*value) <= min)
+    {
+        (*value) = min;
+        gradient = 0;
+    }
+    else
+        (*value)--;
+}
+
+void OptionsEntryInt::Right()
+{
+    if((*value) >= max)
+    {
+        (*value) = max;
+        gradient = 0;
+    }
+    else
+        (*value)++;
+}
+
+void OptionsEntryInt::ShiftLeft()
+{
+    for(int i = 0; i < 5; i++)
+        Left();
+}
+
+void OptionsEntryInt::ShiftRight()
+{
+    for(int i = 0; i < 5; i++)
+        Right();
+}
+
+void OptionsEntryInt::Enter()
+{
+
 }
 
 bool OptionsEntryInt::IsPointInBoundaries(Vector2 pos)

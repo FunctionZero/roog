@@ -23,18 +23,46 @@ void OptionsEntryBool::Display(uint8_t x, uint8_t y)
 
     TCODConsole::root->setBackgroundFlag(TCOD_BKGND_SET);
     TCODConsole::root->setDefaultBackground(tempColor);
-    TCODConsole::root->putCharEx(x, y, '[', TCODColor::white, tempColor);
 
     if(*value)
-        TCODConsole::root->print(x+1, y, "TRUE");
-    else
-        TCODConsole::root->print(x+1, y, "FALSE");
+        TCODConsole::root->print(x, y, "[TRUE] ");
 
-    TCODConsole::root->putCharEx(x+1+length, y, ']', TCODColor::white, tempColor);
+    else
+        TCODConsole::root->print(x, y, "[FALSE]");
+
     TCODConsole::root->setDefaultBackground(tempColor2);
     TCODConsole::root->setCharBackground(x+2+length, y, tempColor2);
     TCODConsole::root->print(x+3+length, y, label.c_str());
     TCODConsole::root->setDefaultBackground(TCODColor::black);
+}
+
+void OptionsEntryBool::Left()
+{
+    Enter();
+}
+
+void OptionsEntryBool::Right()
+{
+    Enter();
+}
+
+void OptionsEntryBool::ShiftLeft()
+{
+    Enter();
+}
+
+void OptionsEntryBool::ShiftRight()
+{
+    Enter();
+}
+
+void OptionsEntryBool::Enter()
+{
+    (*value) = !(*value);
+    if(*value)
+        length = 4;
+    else
+        length = 5;
 }
 
 bool OptionsEntryBool::IsPointInBoundaries(Vector2 pos)

@@ -21,9 +21,9 @@ namespace Options
         vectorOptions.back()->ID = vectorOptions.size() - 1;
     }
 
-    void PushBackInt(std::string label, int* value)
+    void PushBackInt(std::string label, int* value, int min, int max)
     {
-        vectorOptionsInt.push_back(OptionsEntryInt(label, value));
+        vectorOptionsInt.push_back(OptionsEntryInt(label, value, min, max));
         vectorOptions.push_back(&vectorOptionsInt.back());
         vectorOptions.back()->ID = vectorOptions.size() - 1;
     }
@@ -31,7 +31,7 @@ namespace Options
     void Initialize()
     {
         PushBackBool("Mouse Support", &IsMouseEnabled);
-        PushBackInt("Sight Radius", &PlayerSightRadius);
+        PushBackInt("Sight Radius", &PlayerSightRadius, -1, 10);
     }
 
     void Open()
@@ -66,6 +66,14 @@ namespace Options
 
             case TCODK_DOWN:
                 InterfaceDown();
+                break;
+
+            case TCODK_LEFT:
+                InterfaceLeft();
+                break;
+
+            case TCODK_RIGHT:
+                InterfaceRight();
                 break;
 
             default:
@@ -105,9 +113,34 @@ namespace Options
             SelectOptionsEntry(0);
     }
 
+    void InterfaceLeft()
+    {
+        if(currentOptionsEntry >= 0 && currentOptionsEntry < vectorOptions.size())
+        {
+            if(LibTCOD::key.shift)
+                vectorOptions[currentOptionsEntry]->ShiftLeft();
+            else
+                vectorOptions[currentOptionsEntry]->Left();
+        }
+    }
+
+    void InterfaceRight()
+    {
+        if(currentOptionsEntry >= 0 && currentOptionsEntry < vectorOptions.size())
+        {
+            if(LibTCOD::key.shift)
+                vectorOptions[currentOptionsEntry]->ShiftRight();
+            else
+                vectorOptions[currentOptionsEntry]->Right();
+        }
+    }
+
     void InterfaceEnter()
     {
-
+        if(currentOptionsEntry >= 0 && currentOptionsEntry < vectorOptions.size())
+        {
+            vectorOptions[currentOptionsEntry]->Enter();
+        }
     }
 
     void CheckCursor()
