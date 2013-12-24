@@ -8,7 +8,6 @@ class ObjectPool
 {
 public:
     std::list<Object*> ObjectList;
-    std::list<Creature> CreatureList;
 
     Object* NewObject(enumObjectType objType);
     Object* NewObject(TObject* objTemplate);
