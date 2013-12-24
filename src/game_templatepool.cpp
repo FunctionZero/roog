@@ -8,9 +8,6 @@ namespace TemplatePool
 
     void Initialize()
     {
-        TemplateList.push_back(new TObject());
-        DefaultObject = TemplateList.back();
-
         TemplateList.push_back(new TCreature());
         DefaultCreature = TemplateList.back();
 

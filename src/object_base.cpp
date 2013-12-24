@@ -47,10 +47,17 @@ Vector2 Object::GetPosition()
     return Parent->GetPosition();
 }
 
-void Object::Copy(const Object& obj)
+void Object::ChangeToTemplate(TObject* argTemplate)
 {
-    this->DisplayChar = obj.DisplayChar;
-    this->DisplayColor = obj.DisplayColor;
+    if(ObjectType == argTemplate->ObjectType)
+    {
+        DisplayChar = argTemplate->DisplayChar;
+        DisplayColor = argTemplate->DisplayColor;
+    }
+    else
+    {
+        //EXCEPTION
+    }
 }
 
 void Object::MoveInto(Object* Parent)

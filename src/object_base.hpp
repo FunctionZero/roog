@@ -1,15 +1,10 @@
 #pragma once
 #include <list>
+#include "object_enumtypes.hpp"
+#include "template_base.hpp"
 #include "boost_fixedwidth.hpp"
 #include "misc_vector2.hpp"
 #include "libtcod.hpp"
-
-enum enumObjectType
-{
-    OBJECT_OBJECT,
-    OBJECT_MAPTILE,
-    OBJECT_CREATURE
-};
 
 class Object
 {
@@ -27,7 +22,7 @@ public:
 
     virtual int GetContainerLevel();
     virtual Vector2 GetPosition();
-    void Copy(const Object& obj);
+    virtual void ChangeToTemplate(TObject* argTemplate);
 
     void MoveInto(Object* Parent);
     Object* CreateChild(enumObjectType argObjectType);
