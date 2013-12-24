@@ -64,13 +64,3 @@ void OptionsEntryBool::Enter()
     else
         length = 5;
 }
-
-bool OptionsEntryBool::IsPointInBoundaries(Vector2 pos)
-{
-    return IsPointInBoundaries(pos.x, pos.y);
-}
-
-bool OptionsEntryBool::IsPointInBoundaries(uint8_t x, uint8_t y)
-{
-
-}

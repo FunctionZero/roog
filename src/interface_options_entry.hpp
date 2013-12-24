@@ -19,6 +19,4 @@ public:
     virtual void ShiftRight() = 0;
     virtual void Enter() = 0;
     virtual bool IsSelected();
-    virtual bool IsPointInBoundaries(Vector2 pos);
-    virtual bool IsPointInBoundaries(uint8_t x, uint8_t y);
 };

@@ -155,7 +155,11 @@ namespace MainMenu
         for(uint8_t i = 0; i < vectorMenuEntry.size(); i++)
         {
             if(vectorMenuEntry[i].isEnabled && vectorMenuEntry[i].IsPointInBoundaries(LibTCOD::mouse.cx, LibTCOD::mouse.cy))
+            {
                 SelectMenuEntry(i);
+                return;
+            }
+
         }
     }
 }

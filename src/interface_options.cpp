@@ -80,6 +80,16 @@ namespace Options
                 break;
             }
         }
+
+        if(LibTCOD::ev == TCOD_EVENT_MOUSE_MOVE || LibTCOD::mouse.lbutton_pressed)
+        {
+            CheckCursor();
+
+            if(LibTCOD::mouse.lbutton_pressed)
+            {
+                InterfaceEnter();
+            }
+        }
     }
 
     void Display()
@@ -115,7 +125,7 @@ namespace Options
 
     void InterfaceLeft()
     {
-        if(currentOptionsEntry >= 0 && currentOptionsEntry < vectorOptions.size())
+        if(currentOptionsEntry >= 0 && currentOptionsEntry < (int)vectorOptions.size())
         {
             if(LibTCOD::key.shift)
                 vectorOptions[currentOptionsEntry]->ShiftLeft();
@@ -126,7 +136,7 @@ namespace Options
 
     void InterfaceRight()
     {
-        if(currentOptionsEntry >= 0 && currentOptionsEntry < vectorOptions.size())
+        if(currentOptionsEntry >= 0 && currentOptionsEntry < (int)vectorOptions.size())
         {
             if(LibTCOD::key.shift)
                 vectorOptions[currentOptionsEntry]->ShiftRight();
@@ -137,7 +147,7 @@ namespace Options
 
     void InterfaceEnter()
     {
-        if(currentOptionsEntry >= 0 && currentOptionsEntry < vectorOptions.size())
+        if(currentOptionsEntry >= 0 && currentOptionsEntry < (int)vectorOptions.size())
         {
             vectorOptions[currentOptionsEntry]->Enter();
         }
@@ -145,6 +155,15 @@ namespace Options
 
     void CheckCursor()
     {
+        SelectOptionsEntry(-1);
 
+        for(unsigned int i = topmostOptionsEntry; i < vectorOptions.size(); i++)
+            if(LibTCOD::mouse.cx >= 1 &&
+               LibTCOD::mouse.cx <= 2 + vectorOptions[i]->length &&
+               LibTCOD::mouse.cy == 2+i)
+            {
+               SelectOptionsEntry(i);
+               break;
+            }
     }
 }

@@ -41,13 +41,3 @@ bool OptionsEntry::IsSelected()
 {
     return ID == Options::currentOptionsEntry;
 }
-
-bool OptionsEntry::IsPointInBoundaries(Vector2 pos)
-{
-    return false;
-}
-
-bool OptionsEntry::IsPointInBoundaries(uint8_t x, uint8_t y)
-{
-    return false;
-}

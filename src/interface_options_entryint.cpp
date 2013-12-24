@@ -84,13 +84,3 @@ void OptionsEntryInt::Enter()
 {
 
 }
-
-bool OptionsEntryInt::IsPointInBoundaries(Vector2 pos)
-{
-    return IsPointInBoundaries(pos.x, pos.y);
-}
-
-bool OptionsEntryInt::IsPointInBoundaries(uint8_t x, uint8_t y)
-{
-
-}
