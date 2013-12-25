@@ -8,6 +8,9 @@ namespace Game
 
     void CreateDebugGame()
     {
+        if(Game != nullptr)
+            delete Game;
+
         Game = new classGame();
         Game->CurrentMap = Game->Maps.NewMap(100, 100);
 
