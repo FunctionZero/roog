@@ -2,7 +2,7 @@
 #include "object_maptile.hpp"
 #include "object_creature.hpp"
 #include "system_exception.hpp"
-#include "map_class.hpp"
+#include "game_map.hpp"
 #include "game_main.hpp"
 
 Object::Object()

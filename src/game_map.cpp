@@ -1,4 +1,4 @@
-#include "map_class.hpp"
+#include "game_map.hpp"
 
 Map::Map(uint8_t sizeX, uint8_t sizeY)
 {

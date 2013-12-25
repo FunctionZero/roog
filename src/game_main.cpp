@@ -9,7 +9,7 @@ namespace Game
     void CreateDebugGame()
     {
         Game = new classGame();
-        Game->CurrentMap = new Map(100, 100);
+        Game->CurrentMap = Game->Maps.NewMap(100, 100);
 
         Game->PlayerObject = Game->Objects.NewObject(Game->CurrentMap->GetTileAt(Random(0, Game->CurrentMap->sizeX -1), Random(0, Game->CurrentMap->sizeY -1)), TemplatePool::Player);
 
