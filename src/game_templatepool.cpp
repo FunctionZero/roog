@@ -1,23 +1,24 @@
 #include "game_templatepool.hpp"
 
-namespace TemplatePool
+TemplatePool::TemplatePool()
 {
-    std::list<TObject*> TemplateList;
-    TObject* DefaultCreature;
-    TObject* Player;
+    TemplateList.push_back(new TCreature());
+    DefaultCreature = TemplateList.back();
 
-    void Initialize()
+    DefaultCreature->DisplayChar = '?';
+    DefaultCreature->DisplayColor = &TCODColor::pink;
+
+    TemplateList.push_back(new TCreature());
+    Player = TemplateList.back();
+
+    Player->DisplayChar = '@';
+    Player->DisplayColor = &TCODColor::red;
+}
+
+TemplatePool::~TemplatePool()
+{
+    for(auto& it: TemplateList)
     {
-        TemplateList.push_back(new TCreature());
-        DefaultCreature = TemplateList.back();
-
-        DefaultCreature->DisplayChar = '?';
-        DefaultCreature->DisplayColor = &TCODColor::pink;
-
-        TemplateList.push_back(new TCreature());
-        Player = TemplateList.back();
-
-        Player->DisplayChar = '@';
-        Player->DisplayColor = &TCODColor::red;
+        delete it;
     }
 }

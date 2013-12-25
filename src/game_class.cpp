@@ -7,6 +7,5 @@ classGame::classGame()
 
 classGame::~classGame()
 {
-    if(CurrentMap != nullptr)
-        delete CurrentMap;
+
 }

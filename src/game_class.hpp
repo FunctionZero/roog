@@ -15,6 +15,7 @@ public:
 
     MapPool Maps;
     ObjectPool Objects;
+    TemplatePool Templates;
 
     classGame();
     ~classGame();

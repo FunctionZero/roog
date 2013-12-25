@@ -25,7 +25,6 @@ namespace System
     {
         LibTCOD::Initialize();
         Interface::Initialize();
-        TemplatePool::Initialize();
 
         MainMenu::Open();
     }

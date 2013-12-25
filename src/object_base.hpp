@@ -18,7 +18,7 @@ public:
 
     Object();
     Object(Object* argParent);
-    ~Object();
+    virtual ~Object();
 
     virtual int GetContainerLevel();
     virtual Vector2 GetPosition();

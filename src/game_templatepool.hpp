@@ -4,11 +4,13 @@
 #include "template_maptile.hpp"
 #include "template_creature.hpp"
 
-namespace TemplatePool
+class TemplatePool
 {
-    extern std::list<TObject*> TemplateList;
-    extern TObject* DefaultCreature;
-    extern TObject* Player;
+public:
+    std::list<TObject*> TemplateList;
+    TObject* DefaultCreature;
+    TObject* Player;
 
-    void Initialize();
-}
+    TemplatePool();
+    ~TemplatePool();
+};

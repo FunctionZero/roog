@@ -1,6 +1,15 @@
 #include "game_objectpool.hpp"
 #include "game_templatepool.hpp"
+#include "game_main.hpp"
 #include "system_exception.hpp"
+
+ObjectPool::~ObjectPool()
+{
+    for(auto& it: ObjectList)
+    {
+        delete it;
+    }
+}
 
 Object* ObjectPool::NewObject(Object* argParent, enumObjectType objType)
 {
@@ -15,7 +24,7 @@ Object* ObjectPool::NewObject(Object* argParent, enumObjectType objType)
         return nullptr;
 
     case OBJECT_CREATURE:
-        return NewObject(argParent, TemplatePool::DefaultCreature);
+        return NewObject(argParent, Game::Game->Templates.DefaultCreature);
 
     default:
         System::Error("ObjectPool encountered unhandled ObjectType.", 111);
