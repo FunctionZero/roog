@@ -5,32 +5,4 @@
 namespace Game
 {
     classGame* Game;
-
-    void CreateDebugGame()
-    {
-        if(Game != nullptr)
-            delete Game;
-
-        Game = new classGame();
-        Game->CurrentMap = Game->Maps.NewMap(100, 100);
-
-        Game->PlayerObject = Game->Objects.NewObject(Game->CurrentMap->GetTileAt(Random(0, Game->CurrentMap->sizeX -1), Random(0, Game->CurrentMap->sizeY -1)), Game->Templates.Player);
-
-        Tick();
-    }
-
-    bool IsPositionLegal(Vector2 vect)
-    {
-        return(Game->CurrentMap->IsPositionLegal(vect.x, vect.y));
-    }
-
-    bool IsPositionLegal(int x, int y)
-    {
-        return(Game->CurrentMap->IsPositionLegal(x, y));
-    }
-
-    void Tick()
-    {
-        Game->CurrentMap->CalculateFOV(Game->PlayerObject->GetPosition(), 16);
-    }
 }

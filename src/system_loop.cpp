@@ -1,4 +1,4 @@
-#include <sstream>
+#include <string>
 #include "system_loop.hpp"
 #include "system_global.hpp"
 #include "libtcod_input.hpp"
@@ -29,12 +29,7 @@ namespace System
             break;
         }
 
-        char chararray[3];
-        std::stringstream sstream;
-        sstream << TCODSystem::getFps();
-        sstream.getline(chararray, 3);
-
-        TCODConsole::root->print(0, 49, chararray);
+        TCODConsole::root->print(0, 49, std::to_string(TCODSystem::getFps()).c_str());
 
         LibTCOD::Flush();
     }

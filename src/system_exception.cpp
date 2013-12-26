@@ -23,10 +23,10 @@ namespace System
         WriteToFile(argString, "roog.log");
     }
 
-    void Error(std::string argString, int argError)
+    void Error(std::string argString)
     {
         argString.insert(0, "Warning: ");
         WriteToFile(argString, "roog.log");
-        exit(argError);
+        exit(-1);
     }
 }

@@ -127,7 +127,6 @@ namespace MainMenu
         switch(currentMenuEntry)
         {
         case MM_NEWGAME:
-            Game::CreateDebugGame();
             Game::Open();
             break;
 
