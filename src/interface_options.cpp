@@ -20,14 +20,14 @@ namespace Options
 
     void PushBackBool(std::string label, bool* value)
     {
-        vectorOptionsBool.push_back(OptionsEntryBool(label, value));
+        vectorOptionsBool.emplace_back(label, value);
         vectorOptions.push_back(&vectorOptionsBool.back());
         vectorOptions.back()->ID = vectorOptions.size() - 1;
     }
 
     void PushBackInt(std::string label, int* value, int min, int max)
     {
-        vectorOptionsInt.push_back(OptionsEntryInt(label, value, min, max));
+        vectorOptionsInt.emplace_back(label, value, min, max);
         vectorOptions.push_back(&vectorOptionsInt.back());
         vectorOptions.back()->ID = vectorOptions.size() - 1;
     }

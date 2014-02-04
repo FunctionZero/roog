@@ -9,6 +9,14 @@ int Random(int min, int max)
     return distribution(engine);
 }
 
+float Random(float min, float max)
+{
+    static std::mt19937 engine(time(NULL));
+    std::uniform_real_distribution<> distribution(min, max);
+
+    return distribution(engine);
+}
+
 double Random(double min, double max)
 {
     static std::mt19937 engine(time(NULL));

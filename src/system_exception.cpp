@@ -25,7 +25,7 @@ namespace System
 
     void Error(std::string argString)
     {
-        argString.insert(0, "Warning: ");
+        argString.insert(0, "Error: ");
         WriteToFile(argString, "roog.log");
         exit(-1);
     }

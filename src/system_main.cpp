@@ -5,7 +5,6 @@
 #include "libtcod_main.hpp"
 #include "interface_main.hpp"
 #include "interface_mainmenu.hpp"
-#include "game_templatepool.hpp"
 
 int main()
 {

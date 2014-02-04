@@ -5,4 +5,6 @@
 namespace Game
 {
     extern classGame* Game;
+
+    void CreateGame();
 }

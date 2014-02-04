@@ -127,6 +127,7 @@ namespace MainMenu
         switch(currentMenuEntry)
         {
         case MM_NEWGAME:
+            Game::NewGame();
             Game::Open();
             break;
 
